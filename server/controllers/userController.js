@@ -7,7 +7,7 @@ import { CourseProgress } from "../models/CourseProgress.js"
 // Get users data
 export const getUserData = async(req,res)=>{
     try {
-        const userId = req.auth.userId
+        const userId = req.auth().userId
         const user = await User.findById(userId)
         if(!user){
             res.json({success: false, message:"User not found!"})
