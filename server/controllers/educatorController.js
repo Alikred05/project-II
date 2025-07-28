@@ -8,7 +8,7 @@ import User from '../models/User.js'
 // Update role to educator
 export const updateRoleToEducator = async (req,res)=>{
     try {
-        const userId = req.auth.userId
+        const userId = req.auth().userId
 
         await clerkClient.users.updateUserMetadata(userId, {
             publicMetadata:{
@@ -54,7 +54,7 @@ export const addCourse = async (req, res) => {
     try {
         const { courseData } = req.body;
         const imageFile = req.file;
-        const educatorId = req.auth.userId;
+        const educatorId = req.auth().userId;
 
         // console.log(educatorId);
 
@@ -98,7 +98,7 @@ export const addCourse = async (req, res) => {
 export const getEducatorCourses = async(req,res) => {
     try {
         // const educator = req.auth
-        const educator = req.auth.userId
+        const educator = req.auth().userId
         const courses = await Course.find({educator})
         // console.log(req.auth);
         res.json({success: true, courses})
@@ -112,7 +112,7 @@ export const getEducatorCourses = async(req,res) => {
 
 export const educatorDashboardData = async(req,res) =>{
     try {
-        const educator = req.auth.userId
+        const educator = req.auth().userId
 
         const courses = await Course.find({educator});
         const totalCourses = courses.length;
@@ -156,7 +156,7 @@ export const educatorDashboardData = async(req,res) =>{
 
 export const getEnrolledStudentsData = async(req,res) =>{
     try {
-        const educator = req.auth.userId;
+        const educator = req.auth().userId;
         const courses = await Course.find({educator})
         const courseIds = courses.map(course => course._id)
 
