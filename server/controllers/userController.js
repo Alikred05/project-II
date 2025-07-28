@@ -1,11 +1,10 @@
 import Stripe from "stripe"
-import User from "../models/User.js"
 import Course from "../models/Course.js"
 import { Purchase } from "../models/Purchase.js"
+import User from "../models/User.js"
 import { CourseProgress } from "../models/CourseProgress.js"
 
-
-
+// Get users data
 export const getUserData = async(req,res)=>{
     try {
         const userId = req.auth.userId
@@ -19,7 +18,6 @@ export const getUserData = async(req,res)=>{
         res.json({success: false, message:error.message})
     }
 }
-
 
 // User enrolled course with lecture link
 
@@ -95,7 +93,7 @@ export const purchaseCourse = async (req,res) => {
     }
 }
 
-//update user course progress
+// Update user Course progress
 
 export const updateUserCourseProgress = async(req,res)=>{
     try {
@@ -125,6 +123,7 @@ export const updateUserCourseProgress = async(req,res)=>{
         res.json({success: false, message:error.message})
     }
 }
+
 // get user course progress
 
 export const getUserCourseProgress = async(req,res)=>{
@@ -137,6 +136,7 @@ export const getUserCourseProgress = async(req,res)=>{
         res.json({success: false, message:error.message})
     }
 }
+
 
 // Add user ratings to course
 

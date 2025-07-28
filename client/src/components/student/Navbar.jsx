@@ -1,12 +1,16 @@
 import React, { useContext } from 'react';
 import { assets } from '../../assets/assets';
-import { Link, useLocation } from 'react-router-dom';
+import { Await, Link, useLocation } from 'react-router-dom';
 import { useClerk, UserButton, useUser } from '@clerk/clerk-react';
 import { AppContext } from '../../context/AppContext';
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
+
+  
   const location = useLocation();
-  const { navigate, isEducator } = useContext(AppContext)
+  const { navigate, isEducator, backendUrl, setIsEducator, getToken } = useContext(AppContext)
 
   const isCourseListPage = location.pathname.includes('/course-list');
 
@@ -15,8 +19,27 @@ const Navbar = () => {
 
   // Temporary logic for educator
  
-  const becomeEducator = () => {
-    navigate('/educator-dashboard'); // or handle logic
+  const becomeEducator = async () => {
+    try {
+			if(isEducator){
+				navigate('/educator')
+				return;
+			}
+
+			const token = await getToken();
+
+			const {data} = await axios.get(backendUrl + '/api/educator/update-role' , {headers: {Authorization: `Bearer ${token}`}})
+			console.log("educ", data);
+			
+			if(data.success){
+				setIsEducator(true);
+				toast.success(data.message)
+			}else{
+				toast.error(data.message)
+			}
+		} catch (error) {
+			toast.error(error.message)
+		}
   };
 
   return (
@@ -36,7 +59,7 @@ const Navbar = () => {
         <div className="flex items-center gap-5">
           {user && (
             <>
-              <button onClick={()=>{navigate('/educator')}}>
+              <button onClick={becomeEducator}>
                 {isEducator ? 'Educator Dashboard' : 'Become Educator'}
               </button>
               <span>|</span>
@@ -62,7 +85,7 @@ const Navbar = () => {
         <div className="flex items-center gap-1 sm:gap-2 max-sm:text-xs">
           {user && (
             <>
-             <button onClick={()=>{navigate('/educator')}}>
+             <button onClick={becomeEducator}>
                 {isEducator ? 'Educator Dashboard' : 'Become Educator'}
               </button>
               <span>|</span>
