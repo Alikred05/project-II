@@ -58,6 +58,7 @@ const MyEnrollMents = () => {
   },[userData])
 
   useEffect(()=>{
+	console.log("Fetched Courses:", enrolledCourses);
     if(enrolledCourses.length > 0){
       getCourseProgress();
     }

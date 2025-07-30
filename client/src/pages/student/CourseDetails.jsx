@@ -355,4 +355,5 @@ const CourseDetails = () => {
 		<Loading />
 	);
 };
+
 export default CourseDetails;
