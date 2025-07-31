@@ -49,10 +49,9 @@ const MyEnrollMents = () => {
     }
   }, [userData, fetchUserEnrolledCourses])
 
-  useEffect(() => {
-    console.log("Fetched Courses:", enrolledCourses)
-    if (enrolledCourses.length > 0) {
-      getCourseProgress()
+  useEffect(()=>{
+    if(enrolledCourses.length > 0){
+      getCourseProgress();
     }
   }, [enrolledCourses])
 

@@ -314,72 +314,48 @@ const CourseDetails = () => {
               </div>
             </div>
 
-            <button
-              onClick={enrollCourse}
-              className={`w-full py-4 rounded-xl text-xl font-bold shadow-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl 
-                ${
-                  isAlreadyEnrolled
-                    ? "bg-gray-300 text-gray-700 cursor-not-allowed"
-                    : "bg-gradient-to-r from-blue-600 to-blue-800 text-white"
-                }`}
-              disabled={isAlreadyEnrolled}
-            >
-              {isAlreadyEnrolled ? "Already Enrolled" : "Enroll Now"}
-            </button>
+						<div
+							// onClick={enrollCourse}
+							
+						>
+							{isAlreadyEnrolled
+								? <p className="md:mt-6 mt-4 w-full py-3 rounded text-center  bg-blue-600 text-white font-medium"> Already Enrolled </p>
+								: courseData.coursePrice -
+										(courseData.discount * courseData.coursePrice) / 100 ===
+								  0.00
+								? <p className="md:mt-6 mt-4 w-full py-3 rounded text-center  bg-blue-600 text-white font-medium"> Free </p>
+								: <button onClick={enrollCourse} className="md:mt-6 mt-4 w-full py-3 rounded text-center  bg-blue-600 text-white font-medium"> Enroll Now</button>}
+						</div>
 
-            <div className="pt-10">
-              <p className="text-xl md:text-2xl font-bold text-gray-900 mb-4">What you'll get: </p>
-              <ul className="ml-0 pt-2 text-base md:text-lg text-gray-700 space-y-3">
-                <li className="flex items-start gap-3">
-                  <img
-                    src={assets.check_icon || "/placeholder.svg?height=20&width=20&query=check icon"}
-                    alt="check"
-                    className="w-5 h-5 mt-1 flex-shrink-0"
-                  />
-                  <span>Lifetime access with free updates.</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <img
-                    src={assets.check_icon || "/placeholder.svg?height=20&width=20&query=check icon"}
-                    alt="check"
-                    className="w-5 h-5 mt-1 flex-shrink-0"
-                  />
-                  <span>Step-by-step, hands-on project guidance.</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <img
-                    src={assets.check_icon || "/placeholder.svg?height=20&width=20&query=check icon"}
-                    alt="check"
-                    className="w-5 h-5 mt-1 flex-shrink-0"
-                  />
-                  <span>Downloadable resources and source code.</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <img
-                    src={assets.check_icon || "/placeholder.svg?height=20&width=20&query=check icon"}
-                    alt="check"
-                    className="w-5 h-5 mt-1 flex-shrink-0"
-                  />
-                  <span>Interactive quizzes to test your knowledge.</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <img
-                    src={assets.check_icon || "/placeholder.svg?height=20&width=20&query=check icon"}
-                    alt="check"
-                    className="w-5 h-5 mt-1 flex-shrink-0"
-                  />
-                  <span>Certificate of completion.</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-      <Footer />
-    </>
-  ) : (
-    <Loading />
-  )
-}
+						<div >
+							{courseData.coursePrice -
+								(courseData.discount * courseData.coursePrice) / 100 ===
+							0.00 ? (
+								<p className="md:mt-6 mt-4 w-full text-center py-3 rounded  bg-blue-600 text-white font-medium">Click on Course structure </p>
+							) : isAlreadyEnrolled ? <Link  to="/my-enrollments"><p className="md:mt-6 mt-4 w-full text-center py-3 rounded  bg-blue-600 text-white font-medium">My Enrollments</p> </Link> : ""}
+						</div>
 
-export default CourseDetails
+						<div className="pt-6">
+							<p className="md:text-xl text-lg font-medium text-gray-800">
+								What's in the course?{" "}
+							</p>
+							<ul className="ml-4 pt-2 text-sm md:text-default list-disc text-gray-500">
+								<li>Lifetime access with free updates.</li>
+								<li>Step-by-step, hands-on project guidance.</li>
+								<li>Downloadable resources and source code.</li>
+								<li>Quizzes to test your knowledge.</li>
+								<li>Certificate of completion.</li>
+								<li>Quizzes to test your knowledge.</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<Footer />
+		</>
+	) : (
+		<Loading />
+	);
+};
+export default CourseDetails;
