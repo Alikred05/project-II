@@ -43,11 +43,8 @@ import profile_img2 from './profile_img2.png'
 import profile_img3 from './profile_img3.png'
 import lesson_icon from './lesson_icon.svg'
 
-import abhishek from './abhishek.JPG'
-import shreyansh from './shreyansh.JPG'
 export const assets = {
-    abhishek,
-    shreyansh,
+    
     logo,
     search_icon,
     sketch,
@@ -109,22 +106,22 @@ export const dummyEducatorData = {
 
 export const dummyTestimonial = [
     {
-        name: 'Sophia Carter',
-        role: 'Student @ AKTU',
-        image: assets.abhishek,
+        name: 'Rojan Chandra Poudel',
+        role: 'Data Scientist @ DMC',
+        image: assets.profile_img_1,
         rating: 5,
         feedback: 'Edemy LMS has revolutionized my teaching experience. The platform is intuitive, making course creation and student engagement seamless.',
     },
     {
-        name: 'Shreyansh Dubey',
-        role: 'Student @ KNIT',
-        image: assets.shreyansh,
+        name: 'Diwash Mishra',
+        role: 'Software Engineer @ DMC',
+        image: assets.profile_img2,
         rating: 4.8,
         feedback: 'Edemy LMS provides an exceptional learning environment. The structured courses, real-time tracking, and user-friendly interface are top-notch.',
     },
     {
-        name: 'Olivia Martinez',
-        role: 'Software Engineer @ Microsoft',
+        name: 'Nickesh Adhikari',
+        role: 'AI/ML @ DMC',
         image: assets.profile_img_3,
         rating: 4.7,
         feedback: 'Edemy LMS is a fantastic platform for upskilling. Its diverse course library and smooth UI make learning highly effective and engaging.',

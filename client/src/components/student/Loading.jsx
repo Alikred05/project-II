@@ -1,32 +1,58 @@
-import React, { useEffect } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+"use client"
+
+import { useEffect } from "react"
+import { useNavigate, useParams } from "react-router-dom"
 
 const Loading = () => {
-
-  const {path} = useParams()
-
-  const navigate = useNavigate();
+  const { path } = useParams()
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (path) {
       const timer = setTimeout(() => {
-        navigate(`/${path}`);
-      }, 5000);
-
-      return () => clearTimeout(timer);
+        navigate(`/${path}`)
+      }, 5000) // Navigates after 5 seconds
+      return () => clearTimeout(timer)
     }
-  }, []);
-  // }, [path, navigate]);
+  }, [path, navigate]) // Added navigate to dependency array for best practice
 
   return (
-    <div className='min-h-[10vh] flex items-center justify-center'>
-      {/* <div className='w-16 sm:w-20 aspect-square border-4 border-gray-400 border-t-4 border-t-blue-400 rounded-full animate-spin '></div> */}
-      <div className="flex space-x-2">
-          <div className="w-4 h-4 bg-blue-500 rounded-full animate-ping animation-delay-400"></div>
-           <div className="w-4 h-4 bg-green-500 rounded-full animate-ping animation-delay-400"></div>
-           <div className="w-4 h-4 bg-yellow-500 rounded-full animate-ping animation-delay-400"></div>
-           {/* <div className="w-4 h-4 bg-red-600 rounded-full animate-ping animation-delay-400"></div> */}
-         </div>
+    <div className="fixed inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-blue-950 dark:via-indigo-950 dark:to-purple-950 z-[9999] p-4">
+      <div className="flex space-x-3">
+        <div
+          className="w-5 h-5 bg-blue-600 dark:bg-blue-500 rounded-full animate-bounce"
+          style={{ animationDelay: "0s" }}
+        ></div>
+        <div
+          className="w-5 h-5 bg-indigo-600 dark:bg-indigo-500 rounded-full animate-bounce"
+          style={{ animationDelay: "0.2s" }}
+        ></div>
+        <div
+          className="w-5 h-5 bg-purple-600 dark:bg-purple-500 rounded-full animate-bounce"
+          style={{ animationDelay: "0.4s" }}
+        ></div>
+      </div>
+      <p className="mt-8 text-lg md:text-xl font-semibold text-gray-700 dark:text-gray-300 animate-pulse">
+        Loading content, please wait...
+      </p>
+
+      {/* Add custom keyframes for the bounce animation */}
+      <style jsx>{`
+        @keyframes bounce {
+          0%,
+          100% {
+            transform: translateY(-25%);
+            animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+          }
+          50% {
+            transform: translateY(0);
+            animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+          }
+        }
+        .animate-bounce {
+          animation: bounce 1s infinite;
+        }
+      `}</style>
     </div>
   )
 }
