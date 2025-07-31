@@ -28,11 +28,11 @@ const TestimonialSection = () => {
               />
               <div>
                 <h1 className="text-xl font-semibold bg-gradient-to-r from-blue-600 to-blue-800 dark:from-blue-400 dark:to-blue-600 bg-clip-text text-transparent">
-                  {/* Gradient text for name */}
+                  
                   {testimonial.name}
                 </h1>
-                <p className="text-sm bg-gradient-to-r from-blue-700 to-blue-500 dark:from-blue-700 dark:to-blue-500 bg-clip-text text-transparent">
-                  {/* Gradient text for role */}
+                <p className="text-sm bg-gradient-to-r from-blue-500 to-blue-700 dark:from-blue-500 dark:to-blue-700 bg-clip-text text-transparent">
+                 
                   {testimonial.role}
                 </p>
               </div>

@@ -8,9 +8,7 @@ const Hero = () => {
       className="relative flex flex-col items-center justify-center w-full pt-24 md:pt-36 pb-16 md:pb-24 px-4 sm:px-8 lg:px-16 text-center overflow-hidden
                 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-blue-950 dark:via-indigo-950 dark:to-purple-950"
     >
-      {" "}
-      {/* Enhanced gradient background */}
-      {/* Optional: Add subtle background shapes/blobs for extra visual interest */}
+      
       <div className="absolute top-1/4 left-1/4 w-48 h-48 bg-blue-200 dark:bg-blue-700 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob"></div>
       <div className="absolute top-1/2 right-1/4 w-64 h-64 bg-purple-200 dark:bg-purple-700 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob animation-delay-2000"></div>
       <div className="absolute bottom-1/4 left-1/3 w-56 h-56 bg-indigo-200 dark:bg-indigo-700 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob animation-delay-4000"></div>

@@ -103,10 +103,10 @@ const CourseDetails = () => {
   return courseData ? (
     <>
       <div className="relative flex flex-col md:flex-row items-start justify-between px-4 md:px-8 lg:px-16 pt-20 pb-10 gap-12 lg:gap-16">
-        {/* Enhanced Hero Background */}
+       
         <div className="absolute top-0 left-0 w-full h-96 bg-gradient-to-br from-blue-50 to-indigo-100 -z-10 opacity-70"></div>
 
-        {/* Left Column - Course Overview */}
+       
         <div className="w-full md:w-1/2 z-10 text-gray-800">
           <h1 className="text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight mb-4 drop-shadow-sm">
             {courseData.courseTitle}
@@ -114,7 +114,7 @@ const CourseDetails = () => {
           <p
             className="pt-4 text-lg md:text-xl text-gray-700 leading-relaxed mb-8"
             dangerouslySetInnerHTML={{
-              __html: courseData.courseDescription.slice(0, 250) + "...", // Increased slice for more description
+              __html: courseData.courseDescription.slice(0, 250) + "...", 
             }}
           ></p>
 

@@ -12,15 +12,14 @@ const Rating = ({ initialRating, onRate }) => {
 
   useEffect(() => {
     if (initialRating !== undefined && initialRating !== null) {
-      // Check for undefined/null explicitly
+    
       setRating(initialRating)
     }
   }, [initialRating])
 
   return (
     <div className="flex items-center gap-0.5">
-      {" "}
-      {/* Use flex for better alignment and small gap */}
+     
       {Array.from({ length: 5 }, (_, index) => {
         const starValue = index + 1
         return (

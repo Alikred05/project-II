@@ -36,7 +36,7 @@ const Loading = () => {
         Loading content, please wait...
       </p>
 
-      {/* Add custom keyframes for the bounce animation */}
+     
       <style jsx>{`
         @keyframes bounce {
           0%,
